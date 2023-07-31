@@ -9,7 +9,13 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { getFirestore, collection, query, limit, getDocs } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
-//insert firebase Config 
+  apiKey: "AIzaSyDYpKDtHuEwU4lKzM1FiIyjxd4d_PqaT6g",
+  authDomain: "fir-project-8efcd.firebaseapp.com",
+  projectId: "fir-project-8efcd",
+  storageBucket: "fir-project-8efcd.appspot.com",
+  messagingSenderId: "48133128965",
+  appId: "1:48133128965:web:803b53acc6be4a9f85ad6c",
+  measurementId: "G-7G197HXJGS"
 };
 
 const app = initializeApp(firebaseConfig); // Initialize the Firebase app with the provided configuration
@@ -30,7 +36,7 @@ const App = () => {
     try {
       const carsDataRef = collection(db, 'cars_data');
       //const snapshot = await getDocs(query(carsDataRef));
-      const snapshot = await getDocs(query(carsDataRef, limit(5)));
+      const snapshot = await getDocs(query(carsDataRef, limit(25)));
 
       const data = [];
       snapshot.forEach((doc) => {
@@ -41,7 +47,7 @@ const App = () => {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };
+  }; 
 
   // useEffect hook to listen for changes in authentication state
   useEffect(() => {
